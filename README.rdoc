@@ -1,0 +1,70 @@
+# Name
+WaveLocal
+
+## Description
+Main objectives is to wave local place better & to energize the interacton among people in Waseda.
+
+### Table
++ usereets
++ companyeets
++ users
++ companies
++ likes
+
+### Association
++ usereets:
+ - belongs to user
+ - has many likes
+
++ companyeets:
+ - belongs to company
+ - has many likes
+
++ users:
+ - has many usereets
+
++ companies:
+ - has many companyeets
+
++ likes:
+ - belongs to usereets
+ - belongs to companyeets
+
+### Culumns
+#### usereets
+|id     |title     |explanation|pic |user_id|like_count|
+|-------|----------|-----------|----|-------|----------|
+|integer|text      |text       |text|integer|integer   |
+
+#### companyeets
+|id     |title     |explanation|pic |company_id|like_count|
+|-------|----------|-----------|----|----------|----------|
+|integer|text      |text       |text|integer   |integer   |
+
+#### user
+|id     |name  |email|password|undecided       |avater |
+|-------|------|-----|--------|----------------|-------|
+|integer|string|text |text    |text or integer |text   |
+
+#### company
+|id     |name  |email|password|undecided       |avater |
+|-------|------|-----|--------|----------------|-------|
+|integer|string|text |text    |text or integer |text   |
+
+#### like
+|id     ||user_id|comapny_id|usereet_id|companyeet_id|
+|-------|--------|----------|----------|-------------|
+|integer|integer |integer   ||integer  ||integer     |
+
+### Controllers
+## usereets
+ - has index, new, create, edit and delete methods
+## companyeets
+ - has index, new, create, edit and delete methods
+## user
+ - has show method
+## company
+ - has show method
+## like
+## ranking
+ - has ranking method
