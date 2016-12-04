@@ -1,0 +1,22 @@
+<div id="post", class="post-class">
+  <% current_company.companyeets.each do |companyeet| %>
+    <div class="tweet-box">
+      <div class="super-chat-box">
+        <div class="chat-box">
+          <div class="chat-face">
+            <%= image_tag companyeet.company.avatar.url, width:"90", height:"90"%>
+          </div>
+          <div class="chat-area">
+            <div class="chat-hukidashi">
+              <%= companyeet.title %>
+              <p>　　　<%= companyeet.company.nickname %>より</p>
+            </div>
+          </div>
+        </div>
+        <div class="frame">
+          <%= image_tag companyeet.pic, class: "image_tag" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

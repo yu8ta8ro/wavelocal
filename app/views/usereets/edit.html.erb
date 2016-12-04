@@ -1,6 +1,16 @@
-<% form_for @usereet %>
-<%= f.textarea :title %>
-<%= f.textarea :explanation %>
-<%= f.image_file :pic %>
-
-<% end %>
+<div class="tweet-box">
+  <% if user_signed_in? %>
+    <% unless company_signed_in? %>
+      <div id="post_field">
+        <%= form_for @usereet, remote: true, authenticity_token: true do |f| %>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+        <%= f.label :画像 %>
+        <%= f.file_field :pic %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.submit :投稿 %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

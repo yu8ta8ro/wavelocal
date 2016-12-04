@@ -1,15 +1,15 @@
 class UsereetsController < ApplicationController
 
   def index
-    @usereets = Usereet.order('id DESC').page(params[:page]).per(6)
+    @usereets = Usereet.order('id DESC')
+    @usereet = Usereet.new
   end
 
   def new
-    @usereets = Usereet.new
   end
 
   def create
-    Usereet.create(title: create_params[:title], explanation: create_params[:explanation], pic: create_params[:pic], , user_id: current_user.id)
+    Usereet.create(title: create_params[:title], pic: create_params[:pic], user_id: current_user.id)
     redirect_to action: :index
   end
 
@@ -18,13 +18,22 @@ class UsereetsController < ApplicationController
   end
 
   def update
+    @usereet = Usereet.find(params[:id])
+    @usereet.update(title: create_params[:title], pic: create_params[:pic], user_id: current_user.id)
+    redirect_to root_path
+  end
+
+  def show
+  end
+
+  def destroy
     usereet = Usereet.find(params[:id])
-    usereet.update
+    usereet.destroy
     redirect_to render: index
   end
 
   private
   def create_params
-    params.require(:baba).permit(:title, :concept, :image, :image_cache)
+    params.require(:usereet).permit(:title, :pic)
   end
 end

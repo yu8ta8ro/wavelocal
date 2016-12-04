@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Wavelocal</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Wavelocal</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <script type="text/javascript" src="./footerFixed.js"></script>
+  </head>
 
-<%= yield %>
+  <body>
 
-</body>
+    <%= render 'layouts/header'%>
+    <%= yield %>
+
+    <footer id="footer">
+      <p>
+        Copyright PicTweet 2014.
+      </p>
+    </footer>
+  </body>
 </html>

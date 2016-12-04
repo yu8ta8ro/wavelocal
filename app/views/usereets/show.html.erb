@@ -1,0 +1,6 @@
+<%  current_user.usereets.each do |usereet| %>
+  <div>
+    <div><%= usereet.title %></div>
+    <div><%= image_tag usereet.pic %></div>
+  </div>
+<% end %>

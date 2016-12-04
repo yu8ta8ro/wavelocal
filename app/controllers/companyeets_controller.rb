@@ -1,29 +1,33 @@
 class CompanyeetsController < ApplicationController
-  def index
-    @usereets = Usereet.order('id DESC').page(params[:page]).per(6)
-  end
 
-  def new
-    @usereets = Usereet.new
+  def index
+    @companyeets = Companyeet.all
+    @companyeet = Companyeet.new
   end
 
   def create
-    Usereet.create(title: create_params[:title], explanation: create_params[:explanation], pic: create_params[:pic], , user_id: current_user.id)
+    Companyeet.create(title: create_params[:title], pic: create_params[:pic], company_id: current_company.id)
     redirect_to action: :index
   end
 
   def edit
-    @usereet = Usereet.find(params[:id])
+    @companyeet = Companyeet.find(params[:id])
   end
 
   def update
-    usereet = Usereet.find(params[:id])
-    usereet.update
+    @companyeet = Companyeet.find(params[:id])
+    @companyeet.update(title: create_params[:title], pic: create_params[:pic], company_id: current_company.id)
+    redirect_to root_path
+  end
+
+  def destroy
+    companyeet = Companyeet.find(params[:id])
+    companyeet.destroy
     redirect_to render: index
   end
 
   private
   def create_params
-    params.require(:baba).permit(:title, :concept, :image, :image_cache)
+    params.require(:companyeet).permit(:title, :pic)
   end
 end

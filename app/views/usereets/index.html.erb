@@ -1,5 +1,46 @@
-<% Usereets.each do |tweet| %>
-<%= tweet.title %>
-<%= tweet.explanation %>
-<%= image_tag tweet.pic %>
-<% end %>
+<div id="post", class="post-class">
+  <% @usereets.each do |usereet| %>
+    <div class="tweet-box">
+      <div class="super-chat-box">
+        <div class="chat-box">
+          <div class="chat-face">
+            <%= image_tag usereet.user.avatar.url, width:"90", height:"90"%>
+          </div>
+          <div class="chat-area">
+            <div class="chat-hukidashi">
+              <%= usereet.title %>
+              <p>　　　<%= usereet.user.nickname %>より</p>
+            </div>
+            <% if user_signed_in? && current_user.id == usereet.user_id %>
+              <%= link_to "編集", edit_usereet_path(usereet.id)%>
+            <% end %>
+          </div>
+        </div>
+        <div class="frame">
+          <%= image_tag usereet.pic, class: "image_tag" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="tweet-post">
+  <% if user_signed_in? %>
+    <div id="post_field", class="post_field">
+      <%= form_for @usereet, class:"form-inline", remote: true, authenticity_token: true do |f| %>
+        <div class="form-group">
+          <%= f.label :つぶやき, for:"exampleInputEmail1" %>
+          <%= f.text_field :title, type:"text", class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :画像（下をClick！）, for:"exampleInputFile" %>
+          <%= f.file_field :pic, type:"file", id:"exampleInputFile" %>
+          <%= f.hidden_field :user_id %>
+        </div>
+        <div class="type="button" class="btn btn-primary btn-lg btn-block"">
+        <%= f.submit :投稿 %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
