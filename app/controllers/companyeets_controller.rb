@@ -1,8 +1,13 @@
 class CompanyeetsController < ApplicationController
 
   def index
-    @companyeets = Companyeet.all
+    @companyeets = Companyeet.order('id DESC')
     @companyeet = Companyeet.new
+  end
+
+  def show
+    @like = Like.find_by(user_id: current_user.id, prototype_id: params[:id]) if user_signed_in?
+    @companyeet = Companyeet.find(params[:id])
   end
 
   def create
@@ -23,7 +28,7 @@ class CompanyeetsController < ApplicationController
   def destroy
     companyeet = Companyeet.find(params[:id])
     companyeet.destroy
-    redirect_to render: index
+    redirect_to  action: :index
   end
 
   private

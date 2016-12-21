@@ -11,6 +11,22 @@
 
     <%= yield %>
 
+    
+  <div class="ranking-content">
+  <div class="mbr-header__text">
+    週次ランキング
+  </div>
+  <div class="tweet-box">
+    <% @ranking.each do |ranking| %>
+      <div>
+        <%= ranking.title %>
+      </div>
+      <!-- <%= image_tag ranking.pic, class:"image_tag"%> -->
+    <% end %>
+  </div>
+</div>
+
+
     <footer class="header">
       <p>
         Copyright WaveLocal 2016.

@@ -5,6 +5,17 @@ class UsereetsController < ApplicationController
     @usereet = Usereet.new
   end
 
+  def show
+    @usereet = Usereet.find(params[:id])
+    usereet = Usereet.find(params[:id])
+    if usereet.like_user(current_user).present?
+      @usereets = Usereet.order('id DESC')
+      render action: :index
+    else
+      @like = Like.find_by(user_id: current_user.id, usereet_id: params[:id]) if user_signed_in?
+    end
+  end
+
   def new
   end
 
@@ -23,13 +34,11 @@ class UsereetsController < ApplicationController
     redirect_to root_path
   end
 
-  def show
-  end
 
   def destroy
     usereet = Usereet.find(params[:id])
     usereet.destroy
-    redirect_to render: index
+    redirect_to  action: :index
   end
 
   private

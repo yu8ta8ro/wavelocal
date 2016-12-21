@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   devise_for :companies
   devise_for :users
-  resources :usereets
-  resources :companyeets
 
-  root 'companyeets#index'
+  root 'tops#index'
+  resources :companyeets
+  resources :usereets do
+    resources :likes, only: [:create, :destroy]
+  end
+
+  resources :tops
   resources :users
   resources :companies
 

@@ -1,7 +1,15 @@
+
+<div class="header">
+  <ul class="nav nav-pills">
+    <li><%= link_to "ホーム", tops_path %></li>
+    <li><%= link_to "店主のつぶやき", companyeets_path %></li>
+    <li class="active"><%= link_to "皆のつぶやき", usereets_path %></li>
+  </ul>
+</div>
+
 <div id="post", class="post-class">
   <% @usereets.each do |usereet| %>
     <div class="tweet-box">
-      <div class="super-chat-box">
         <div class="chat-box">
           <div class="chat-face">
             <%= image_tag usereet.user.avatar.url, width:"90", height:"90"%>
@@ -9,38 +17,78 @@
           <div class="chat-area">
             <div class="chat-hukidashi">
               <%= usereet.title %>
-              <p>　　　<%= usereet.user.nickname %>より</p>
+              <p>　　　by <%= usereet.user.nickname %></p>
             </div>
-            <% if user_signed_in? && current_user.id == usereet.user_id %>
-              <%= link_to "編集", edit_usereet_path(usereet.id)%>
-            <% end %>
           </div>
         </div>
-        <div class="frame">
-          <%= image_tag usereet.pic, class: "image_tag" %>
-        </div>
+        <div class="dropdown">
+          <div class="dropbtn">
+            <div class="dropdown-content">
+              <% if user_signed_in? && current_user.id == usereet.user_id %>
+                <%= link_to "編集", edit_usereet_path(usereet.id)%>
+                <%= link_to "削除", usereet_path(usereet.id), method: :delete %>
+              <% end %>
+              <%= link_to "LIKE!を", usereet_path(usereet.id)%>
+                <a href="#">Link 3</a>
+            </div>
+            <%= image_tag usereet.pic, class: "image_tag" %>
+          </div>
+      </div>
+      <div class="like-box">
+        <Nobr>LIKE!　　　　<%= usereet.likes.count %>コ</Nobr>
       </div>
     </div>
   <% end %>
 </div>
 
-<div class="tweet-post">
+<div class="post-field">
   <% if user_signed_in? %>
-    <div id="post_field", class="post_field">
-      <%= form_for @usereet, class:"form-inline", remote: true, authenticity_token: true do |f| %>
-        <div class="form-group">
-          <%= f.label :つぶやき, for:"exampleInputEmail1" %>
-          <%= f.text_field :title, type:"text", class:"form-control" %>
+  <div class="registration-btn">
+    <p class="mbr-hero__subtext">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo", style="width: 350px;height: 60px">あなたも投稿しよう</button>
+      </p>
+  </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+          </div>
+
+          <div id="post_field", class="post_field">
+            <%= form_for @usereet, class:"form-group", remote: true, authenticity_token: true do |f| %>
+              <div class="modal-body">
+                <div class="form-group">
+                  <%= f.label :つぶやき, for:"recipient-name", class:"control-label" %>
+                  <%= f.text_field :title, type:"text", class:"form-control", id:"recipient-name" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :画像, for:"exampleInputFile", class:"control-label" %>
+                  <%= f.file_field :pic, type:"file", class:"form-control", id:"message-text" %>
+                  <%= f.hidden_field :user_id %>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <%= f.submit :投稿, class:"btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>
         </div>
-        <div class="form-group">
-          <%= f.label :画像（下をClick！）, for:"exampleInputFile" %>
-          <%= f.file_field :pic, type:"file", id:"exampleInputFile" %>
-          <%= f.hidden_field :user_id %>
-        </div>
-        <div class="type="button" class="btn btn-primary btn-lg btn-block"">
-        <%= f.submit :投稿 %>
-        </div>
-      <% end %>
+      </div>
+    </div>
+    <% else %>
+    <div class="registration-btn">
+      <p class="mbr-hero__subtext">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo", style="width: 350px;height: 60px">あなたも投稿しよう</button>
+      </p>
     </div>
   <% end %>
 </div>
+
+<% if user_signed_in? %>
+  <% unless company_signed_in? %>
+    <button class="floating", type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">投稿</button>
+    <div style="height:10px;width:10px;"></div>
+  <% end %>
+<% end %>

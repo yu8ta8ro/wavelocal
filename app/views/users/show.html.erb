@@ -1,15 +1,15 @@
 <div id="post", class="post-class">
-  <% current_user.usereets.each do |usereet| %>
+  <p><%= @nickname %>さんのページ</p>
+  <% @usereets.each do |usereet| %>
     <div class="tweet-box">
       <div class="super-chat-box">
         <div class="chat-box">
           <div class="chat-face">
-            <%= image_tag usereet.user.avatar.url, width:"90", height:"90"%>
+            <%= image_tag @pic, width:"90", height:"90"%>
           </div>
           <div class="chat-area">
             <div class="chat-hukidashi">
               <%= usereet.title %>
-              <p>　　　<%= usereet.user.nickname %>より</p>
             </div>
           </div>
         </div>

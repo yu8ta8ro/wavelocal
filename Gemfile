@@ -52,3 +52,5 @@ gem 'bootstrap-sass'
 
 gem 'paperclip'
 
+gem 'pry-rails'
+
