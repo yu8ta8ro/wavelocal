@@ -12,6 +12,7 @@ class CompanyeetsController < ApplicationController
 
   def create
     Companyeet.create(title: create_params[:title], pic: create_params[:pic], company_id: current_company.id)
+    flash[:success] = '投稿しました'
     redirect_to action: :index
   end
 
@@ -22,12 +23,14 @@ class CompanyeetsController < ApplicationController
   def update
     @companyeet = Companyeet.find(params[:id])
     @companyeet.update(title: create_params[:title], pic: create_params[:pic], company_id: current_company.id)
-    redirect_to root_path
+    flash[:success] = '編集しました'
+    redirect_to action: :index
   end
 
   def destroy
     companyeet = Companyeet.find(params[:id])
     companyeet.destroy
+    flash[:success] = '削除しました'
     redirect_to  action: :index
   end
 

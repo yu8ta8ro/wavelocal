@@ -10,7 +10,8 @@ class UsereetsController < ApplicationController
     usereet = Usereet.find(params[:id])
     if usereet.like_user(current_user).present?
       @usereets = Usereet.order('id DESC')
-      render action: :index
+      flash[:success] = '既にLIKE!しています'
+      redirect_to action: :index
     else
       @like = Like.find_by(user_id: current_user.id, usereet_id: params[:id]) if user_signed_in?
     end
@@ -21,6 +22,7 @@ class UsereetsController < ApplicationController
 
   def create
     Usereet.create(title: create_params[:title], pic: create_params[:pic], user_id: current_user.id)
+    flash[:success] = '投稿しました'
     redirect_to action: :index
   end
 
@@ -31,6 +33,7 @@ class UsereetsController < ApplicationController
   def update
     @usereet = Usereet.find(params[:id])
     @usereet.update(title: create_params[:title], pic: create_params[:pic], user_id: current_user.id)
+    flash[:success] = '編集しました'
     redirect_to root_path
   end
 
@@ -38,6 +41,7 @@ class UsereetsController < ApplicationController
   def destroy
     usereet = Usereet.find(params[:id])
     usereet.destroy
+    flash[:success] = '削除しました'
     redirect_to  action: :index
   end
 

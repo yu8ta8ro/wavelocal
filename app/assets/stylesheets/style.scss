@@ -7,7 +7,7 @@ body{
 }
 
 footer{
-  background-color: #D2691E;
+  background-color: #fff7f9;
 }
 
 a{
@@ -144,11 +144,12 @@ p{
 }
 
 .header{
-  background-color: #FFF0F5;
+  // background-color: #fff0f5;
+  background-color: #fff7f9;
   /* box-shadow */
-  box-shadow:0px 3px 13px 0px rgba(70,62,77,0.38);
--moz-box-shadow:0px 3px 13px 0px rgba(70,62,77,0.38);
--webkit-box-shadow:0px 3px 13px 0px rgba(70,62,77,0.38);
+  box-shadow:0px 3px 5px 0px rgba(70,62,77,0.38);
+-moz-box-shadow:0px 3px 5px 0px rgba(70,62,77,0.38);
+-webkit-box-shadow:0px 3px 5px 0px rgba(70,62,77,0.38);
 
 /* border-radius */
   border-radius:14px;
@@ -177,7 +178,7 @@ p{
 // }
 
 .post-field .btn-primary{
-  background-color:  #f09797 !important;
+  background-color: #f16272 !important;
   font-size: 35px;
 }
 
@@ -190,7 +191,8 @@ p{
   margin-right: auto;
   margin-left: auto;
   font-size: 25px;
-  color: #D2691E;
+  font-weight: bold;
+  color: #f16272;
 }
 
 /* Style The Dropdown Button */
@@ -261,7 +263,7 @@ p{
 }
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
-  background-color: #f09797 !important;
+  background-color: #f16272 !important;
   color: white !important;
 }
 
@@ -271,7 +273,7 @@ p{
 
 .nav-pills > li > a {
   border-radius: 4px;
-  color: #f09797 !important;
+  color: #f16272 !important;
   font-size: 17px;
 }
 
@@ -440,8 +442,8 @@ p{
 }
 
 .registration-btn .btn-primary{
-  background-color: #f09797 !important;
-  border-color: #f09797 !important;
+  background-color: #f16272 !important;
+  border-color: #f16272 !important;
   border-radius: 9px;
   font-size: 18px;
 }
@@ -452,7 +454,7 @@ p{
   left: 83%;
   position: fixed;
   z-index: 1;
-  background-color: #f09797 !important;
+  background-color: #f16272 !important;
   border: 1px;
   border-radius: 9px;
   font-size: 15px;
@@ -536,8 +538,8 @@ ul.menu__second-level {
     width: 10px;
     height: 10px;
     margin: 0 0 0 30px;
-    border-right: 1px solid #f09797;
-    border-bottom: 1px solid #f09797;
+    border-right: 1px solid #f16272;
+    border-bottom: 1px solid #f16272;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
@@ -562,7 +564,7 @@ li.menu__single ul.menu__second-level {
 }
 
 ul.menu__second-level a{
-  color: #f09797;
+  color: #f16272;
   text-decoration: none;
   font-size: 15px;
 }
@@ -616,7 +618,7 @@ li.menu__single:hover ul.menu__second-level {
 /* Simple Reset */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-// /* body */
+/* body */
 // body {
 //   background: #e9e9e9;
 //   color: #5e5e5e;
