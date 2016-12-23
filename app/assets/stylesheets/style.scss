@@ -1,13 +1,5 @@
-header {
-  background-color: #D2691E;
-}
-
 body{
   background-color: #fbf7f1;
-}
-
-footer{
-  background-color: #fff7f9;
 }
 
 a{
@@ -161,6 +153,13 @@ p{
   text-align: center;
   height: 120px;
   width: 100%;
+}
+
+.footer{
+  height: 50px;
+  box-shadow:5px 5px 5px 6px rgba(70,62,77,0.38);
+-moz-box-shadow:5px 5px 5px 6px rgba(70,62,77,0.38);
+-webkit-box-shadow:5px 5px 5px 6px rgba(70,62,77,0.38);
 }
 
 

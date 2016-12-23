@@ -1,12 +1,4 @@
 
-<div class="header">
-  <ul class="nav nav-pills">
-    <li><%= link_to "ホーム", tops_path %></li>
-    <li class="active"><%= link_to "店主のつぶやき", companyeets_path %></li>
-    <li><%= link_to "皆のつぶやき", usereets_path %></li>
-  </ul>
-</div>
-
 <div id="post", class="post-class">
   <% @companyeets.each do |companyeet| %>
     <div class="tweet-box">
@@ -32,7 +24,6 @@
                 <%= link_to "編集", edit_companyeet_path(companyeet.id)%>
                 <%= link_to "削除", companyeet_path(companyeet.id), method: :delete %>
               <% end %>
-              <a href="#">Link 3</a>
             </div>
             <%= image_tag companyeet.pic, class: "image_tag" %>
           </div>

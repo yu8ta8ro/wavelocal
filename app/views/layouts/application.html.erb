@@ -9,6 +9,13 @@
 
   <body>
     <header>
+      <% if controller.controller_name == "tops" %>
+        <%= render "layouts/tops_header" %>
+      <% elsif controller.controller_name == "usereets" %>
+        <%= render "layouts/usereets_header" %>
+      <% elsif controller.controller_name == "companyeets" %>
+        <%= render "layouts/companyeets_header" %>
+      <% end %>
     </header>
 
     <% flash.each do |key, value| %>
@@ -19,7 +26,7 @@
 
     <%= yield %>
 
-    <footer class="header">
+    <footer class="header footer">
       <p>
         Copyright WaveLocal 2016.
       </p>
