@@ -1,12 +1,12 @@
 <div class="form-wrapper">
-<h1>Change your password</h1>
+<h1>パスワードの変更</h1>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
   <div class="form-item">
-    <%= f.label :password, "New password" %><br />
+    <%= f.label :"新しいパスワード" %><br />
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em><br />
     <% end %>
@@ -14,13 +14,13 @@
   </div>
 
   <div class="form-item">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
+    <%= f.label :"新しいパスワードをもう一度入力してください" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="button-panel">
     <div class="actions">
-      <%= f.submit "Change my password", class:"button" %>
+      <%= f.submit "パスワードを変更", class:"button" %>
     </div>
   </div>
 <% end %>

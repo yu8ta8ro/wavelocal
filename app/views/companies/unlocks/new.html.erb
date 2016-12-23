@@ -1,17 +1,17 @@
 <div class="form-wrapper">
-<h1>Resend unlock instructions</h1>
+<h1>アカウント停止解除</h1>
 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="form-item">
-    <%= f.label :email %><br />
+    <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
 <div class="button-panel">
   <div class="actions">
-    <%= f.submit "Resend unlock instructions", class:"button" %>
+    <%= f.submit "解除", class:"button" %>
   </div>
 </div>
 <% end %>

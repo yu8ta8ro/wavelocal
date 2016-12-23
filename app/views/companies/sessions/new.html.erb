@@ -1,17 +1,17 @@
 <div class="form-wrapper">
-  <h1>Log In</h1>
+  <h1>ログイン</h1>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
     <div class="form-item">
-      <%= f.email_field :email, autofocus: true, type:"email", required:"true", placeholder:"Email Address" %>
+      <%= f.email_field :email, autofocus: true, type:"email", required:"true", placeholder:"メールアドレス" %>
     </div>
 
     <div class="form-item">
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "off", type:"password", required:"required", placeholder:"Password" %>
+      <%= f.password_field :password, autocomplete: "off", type:"password", required:"required", placeholder:"パスワード" %>
     </div>
 
     <% if devise_mapping.rememberable? -%>
@@ -23,7 +23,7 @@
 
     <div class="button-panel">
       <div class="actions">
-        <%= f.submit "Log In", class:"button", value:"Sign Up" %>
+        <%= f.submit "ログイン", class:"button", value:"Sign Up" %>
       </div>
     </div>
 
