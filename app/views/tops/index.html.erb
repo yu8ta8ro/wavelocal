@@ -1,38 +1,68 @@
+<div class="container">
     <!-- Tab panes -->
-  <div class="login_or_edit">
-    <ul class="table-ul">
+    <div class="login_or_edit">
+      <ul class="table-ul">
 
-    </ul>
+      </ul>
+    </div>
+
+    <!-- start of top_message_Section -->
+  <div class="section">
+    <div class="btn-section">
+      <h3 class="mbr-hero__text">
+        あなたの街をプロデュース
+      </h3>
+      <br>
+      <p class="mbr-hero__subtext">あなたの街はどんな街ですか？　街のみんなで、投稿しよう。</p>
+
+      <% unless user_signed_in? %>
+        <div class="registration-btn">
+          <p class="mbr-hero__subtext">
+            <%= link_to "新規登録する", new_user_registration_path, class:"btn btn-primary", style:"width: 300px;height: 40px"%>
+          </p>
+        </div>
+
+        <div class="registration-btn">
+          <p class="mbr-hero__subtext">
+            <%= link_to "新規登録しないで始める", usereets_path, class:"btn btn-primary", style:"width: 300px;height: 40px"%>
+          </p>
+        </div>
+
+        <div class="registration-btn">
+          <p class="mbr-hero__subtext">
+            <%= link_to "お店の方専用のページ", new_company_registration_path, class:"btn btn-primary", style:"width: 300px;height: 40px"%>
+          </p>
+        </div>
+      <% end %>
+    </div>
   </div>
+  <!-- end of top_message_Section -->
 
-  <div class="btn-section">
-    <h3 class="mbr-hero__text">
-      -あなたの街をプロデュース-
-    </h3>
-    <br>
-    <p class="mbr-hero__subtext">あなたの街はどんな街ですか？　街のみんなで、投稿しよう。</p>
-
-    <% unless user_signed_in? %>
-      <div class="registration-btn">
-        <p class="mbr-hero__subtext">
-          <%= link_to "新規登録する", new_user_registration_path, class:"btn btn-primary", style:"width: 300px;height: 40px"%>
-        </p>
+  <!-- start of news_Section -->
+  <div class="section">
+    <div class="post-class news-post">
+      <div class="mbr-header__text">
+        街のInterview!
       </div>
-
-      <div class="registration-btn">
-        <p class="mbr-hero__subtext">
-          <%= link_to "新規登録しないで始める", usereets_path, class:"btn btn-primary", style:"width: 300px;height: 40px"%>
-        </p>
+      <div class="tweet-box">
+        <div class="chat-box news-post">
+          <div class="chat-face">
+            <%= image_tag "yuito_facebook.jpg", width:"90", height:"90"%>
+          </div>
+          <div class="chat-area">
+            <div class="chat-hukidashi">
+            <p>〜今週の記事はこちら〜</p>
+            <p>　　　　　　　　　　　管理人より</p>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="registration-btn">
-        <p class="mbr-hero__subtext">
-          <%= link_to "お店の方専用のページ", new_company_registration_path, class:"btn btn-primary", style:"width: 300px;height: 40px"%>
-        </p>
-      </div>
-    <% end %>
+    </div>
   </div>
+  <!-- end of ranking_Section -->
 
+  <!-- start of ranking_Section -->
+  <div class="section">
     <div class="mbr-header__text">
       いいねランキング
     </div>
@@ -50,27 +80,8 @@
         <%= image_tag "new_jio_facebook.jpg", width:"200", height:"200" %>
       </div>
     </div>
-
-  <div class="post-class news-post">
-    <div class="mbr-header__text">
-      お知らせ
-    </div>
-    <div class="tweet-box">
-      <div class="chat-box">
-        <div class="chat-face">
-          <%= image_tag "yuito_facebook.jpg", width:"90", height:"90"%>
-        </div>
-        <div class="chat-area">
-          <div class="chat-hukidashi">
-          <p>〜インターンシップ募集のお知らせ〜</p>
-          <p>　Wave社では、インターンシップを募集しています。下記の条件に当てはまる方は是非ご応募ください。</p>
-          <p>　・デザイナー</p>
-          <p>　・エンジニア</p>
-          <p>　・積極的にアイデアを提案できる人</p>
-          <p>wave125waseda@gmail.com</p>
-          <p>　　　　　　　　　　　管理人より</p>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
+  <!-- end of ranking_Section -->
+
+
+</div>

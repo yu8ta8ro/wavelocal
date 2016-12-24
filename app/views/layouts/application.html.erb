@@ -7,29 +7,53 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
-    <header>
-      <% if controller.controller_name == "tops" %>
+  <% if controller.controller_name == "tops" %>
+    <body style="background: url(assets/shop_street_bokashi_ami.jpg) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;">
+      <header>
         <%= render "layouts/tops_header" %>
-      <% elsif controller.controller_name == "usereets" %>
-        <%= render "layouts/usereets_header" %>
-      <% elsif controller.controller_name == "companyeets" %>
-        <%= render "layouts/companyeets_header" %>
+      </header>
+
+      <% flash.each do |key, value| %>
+        <% key = "info" if key == "notice" %>
+        <% key = "danger"  if key == "alert" %>
+        <%= content_tag :div, value, class: "alert alert-#{key}" %>
       <% end %>
-    </header>
 
-    <% flash.each do |key, value| %>
-      <% key = "info" if key == "notice" %>
-      <% key = "danger"  if key == "alert" %>
-      <%= content_tag :div, value, class: "alert alert-#{key}" %>
-    <% end %>
+      <%= yield %>
 
-    <%= yield %>
+      <footer class="header footer">
+        <p>
+          Copyright WaveLocal 2016.
+        </p>
+      </footer>
+    </body>
+  <% else %>
+    <body>
+      <header>
+        <% if controller.controller_name == "usereets" %>
+          <%= render "layouts/usereets_header" %>
+        <% elsif controller.controller_name == "companyeets" %>
+          <%= render "layouts/companyeets_header" %>
+        <% end %>
+      </header>
 
-    <footer class="header footer">
-      <p>
-        Copyright WaveLocal 2016.
-      </p>
-    </footer>
-  </body>
+      <% flash.each do |key, value| %>
+        <% key = "info" if key == "notice" %>
+        <% key = "danger"  if key == "alert" %>
+        <%= content_tag :div, value, class: "alert alert-#{key}" %>
+      <% end %>
+
+      <%= yield %>
+
+      <footer class="header footer">
+        <p>
+          Copyright WaveLocal 2016.
+        </p>
+      </footer>
+    </body>
+  <% end %>
 </html>

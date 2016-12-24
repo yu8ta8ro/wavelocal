@@ -16,10 +16,10 @@
         <div class="dropdown">
           <div class="dropbtn">
             <div class="dropdown-content">
-              <% if user_signed_in? == usereet.user_id %>
+              <% if user_signed_in? %>
                 <%= link_to "LIKE!", usereet_path(usereet.id)%>
               <% end %>
-              <% if user_signed_in? == usereet.user_id %>
+              <% if user_signed_in? && current_user.id == usereet.user_id %>
                 <%= link_to "編集", edit_usereet_path(usereet.id)%>
                 <%= link_to "削除", usereet_path(usereet.id), method: :delete %>
               <% end %>

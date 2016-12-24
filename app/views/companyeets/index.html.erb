@@ -9,11 +9,7 @@
         <div class="chat-area">
           <div class="chat-hukidashi">
             <%= companyeet.title %>
-            <% if user_signed_in? %>
               <p>　　　by <%= companyeet.company.nickname %></p>
-            <% else %>
-              <p>　　　by #{current_company.nickname}</p>
-            <% end %>
           </div>
         </div>
       </div>
