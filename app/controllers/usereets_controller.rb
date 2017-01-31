@@ -34,7 +34,7 @@ class UsereetsController < ApplicationController
     @usereet = Usereet.find(params[:id])
     @usereet.update(title: create_params[:title], pic: create_params[:pic], user_id: current_user.id)
     flash[:success] = '編集しました'
-    redirect_to root_path
+    redirect_to action: :index
   end
 
 

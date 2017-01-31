@@ -1,13 +1,21 @@
 <div class="tweet-box">
   <% if company_signed_in? %>
-    <div id="post_field">
-      <%= form_for @companyeet, remote: true, authenticity_token: true do |f| %>
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-      <%= f.label :画像 %>
-      <%= f.file_field :pic %>
-      <%= f.hidden_field :company_id %>
-      <%= f.submit :投稿 %>
+    <div id="post_field", class="post_field">
+      <%= form_for @companyeet, class:"form-group", remote: true, authenticity_token: true do |f| %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= f.label :つぶやき, for:"recipient-name", class:"control-label" %>
+            <%= f.text_area :title, type:"text", class:"form-control", id:"recipient-name", required:"true" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :画像, for:"exampleInputFile", class:"control-label" %>
+            <%= f.file_field :pic, type:"file", required:"true" %>
+            <%= f.hidden_field :company_id %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit :投稿, class:"btn btn-primary" %>
+        </div>
       <% end %>
     </div>
   <% end %>

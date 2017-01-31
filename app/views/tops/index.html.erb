@@ -8,12 +8,11 @@
 
     <!-- start of top_message_Section -->
   <div class="section">
-    <div class="btn-section">
-      <h3 class="mbr-hero__text">
-        あなたの街をプロデュース
-      </h3>
+      <div class="mbr-hero__text__theme">
+        COOLPON
+      </div>
       <br>
-      <p class="mbr-hero__subtext">あなたの街はどんな街ですか？　街のみんなで、投稿しよう。</p>
+      <p class="mbr-hero__subtext">あなたの街で、使えるクーポン</p>
 
       <% unless user_signed_in? %>
         <div class="registration-btn">
@@ -34,9 +33,30 @@
           </p>
         </div>
       <% end %>
-    </div>
   </div>
   <!-- end of top_message_Section -->
+
+  <!-- start of ranking_Section -->
+  <div class="section">
+    <div class="mbr-header__text">
+      いいねランキング
+    </div>
+    <div class="ranking-content clearfix">
+      <div class="ranking-content-image">
+        <p class="ranking_st">1st 　hogeさん</p>
+        <%= image_tag "yuito_facebook.jpg", width:"200", height:"200" %>
+      </div>
+      <div class="ranking-content-image">
+        <p class="ranking_st">2nd 　hogeさん</p>
+        <%= image_tag "new_yutaro_suit_ver.jpg", width:"200", height:"200" %>
+      </div>
+      <div class="ranking-content-image">
+        <p class="ranking_st">3rd 　hogeさん</p>
+        <%= image_tag "new_jio_facebook.jpg", width:"200", height:"200" %>
+      </div>
+    </div>
+  </div>
+  <!-- end of ranking_Section -->
 
   <!-- start of news_Section -->
   <div class="section">
@@ -51,33 +71,11 @@
           </div>
           <div class="chat-area">
             <div class="chat-hukidashi">
-            <p>〜今週の記事はこちら〜</p>
+            <p>今週の記事はまだありません</p>
             <p>　　　　　　　　　　　管理人より</p>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <!-- end of ranking_Section -->
-
-  <!-- start of ranking_Section -->
-  <div class="section">
-    <div class="mbr-header__text">
-      いいねランキング
-    </div>
-    <div class="ranking-content clearfix">
-      <div class="ranking-content-image">
-        <p>1st 　hogeさん</p>
-        <%= image_tag "yuito_facebook.jpg", width:"200", height:"200" %>
-      </div>
-      <div class="ranking-content-image">
-        <p>2nd 　hogeさん</p>
-        <%= image_tag "new_yutaro_suit_ver.jpg", width:"200", height:"200" %>
-      </div>
-      <div class="ranking-content-image">
-        <p>3rd 　hogeさん</p>
-        <%= image_tag "new_jio_facebook.jpg", width:"200", height:"200" %>
       </div>
     </div>
   </div>

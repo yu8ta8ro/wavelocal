@@ -10,14 +10,14 @@
 
     <div class="form-item">
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <em>(<%= @minimum_password_length %> 字以下)</em>
       <% end %><br />
       <%= f.password_field :password, autocomplete: "off", type:"password", required:"required", placeholder:"パスワード" %>
     </div>
 
 
     <div class="form-item">
-      <%= f.label :password_confirmation %><br />
+      <%= f.label :パスワードの確認 %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off", required:"required", placeholder:"もう一度パスワードを入力してください" %>
     </div>
 

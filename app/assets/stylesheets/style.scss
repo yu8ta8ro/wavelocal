@@ -93,11 +93,11 @@ p{
   padding: 5px;
 }
 
-.login_or_edit {
-  width: 80%;
-  margin-right: auto;
-  margin-left: auto;
-}
+// .login_or_edit {
+//   width: 80%;
+//   margin-right: auto;
+//   margin-left: auto;
+// }
 // end_navber
 
 .thumbnail {
@@ -293,6 +293,16 @@ p{
   color: white;
 }
 // originally font-size: 50px;
+
+.mbr-hero__text__theme{
+  font-size: 60px;
+  font-weight: bold;
+  letter-spacing: 6px;
+  line-height: 1.8;
+  text-align: center;
+  font-style: italic;
+  color: white;
+}
 
 .mbr-header__text {
   display: block;
@@ -706,3 +716,15 @@ form {
 }
 
 // end of devise
+
+.ranking_st{
+  color: white;
+}
+
+// footer
+.footer {
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+}

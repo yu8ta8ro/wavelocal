@@ -54,3 +54,6 @@ gem 'paperclip'
 
 gem 'pry-rails'
 
+group :production, :staging do
+  gem 'rails_12factor'
+end

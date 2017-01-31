@@ -7,7 +7,7 @@
           <li class="menu__single">
             <a href="#" class="init-bottom">設定</a>
             <ul class="menu__second-level">
-              <li><%= link_to "マイページを見る", user_path(current_user) %></li>
+              <!-- <li><%= link_to "マイページを見る", user_path(current_user) %></li> -->
               <li><%= link_to "登録情報を編集する", edit_user_registration_path %></li>
               <li><%= link_to "ログアウトする", destroy_user_session_path %></li>
             </ul>
@@ -20,7 +20,7 @@
             <a href="#" class="init-bottom">設定</a>
             <ul class="menu__second-level">
               <li><%= link_to "ログアウトする", destroy_company_session_path %></li>
-              <li><%= link_to "マイページを見る", company_path(current_company) %></li>
+              <!-- <li><%= link_to "マイページを見る", company_path(current_company) %></li> -->
               <li><%= link_to "登録情報を編集する", edit_company_registration_path %></li>
             </ul>
           </li>
