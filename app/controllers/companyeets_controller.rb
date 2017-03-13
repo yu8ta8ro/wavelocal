@@ -1,4 +1,4 @@
-class CompanyeetsController < ApplicationController
+class CompanyeetsController < RankingController
 
   def index
     @companyeets = Companyeet.order('id DESC')

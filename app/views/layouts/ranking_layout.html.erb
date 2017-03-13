@@ -1,37 +1,34 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Wavelocal</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'elements', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
-
-    <%= yield %>
-
-    
-  <div class="ranking-content">
-  <div class="mbr-header__text">
-    週次ランキング
-  </div>
-  <div class="tweet-box">
-    <% @ranking.each do |ranking| %>
-      <div>
-        <%= ranking.title %>
-      </div>
-      <%= image_tag ranking.pic, class:"image_tag"%>
+  <header>
+    <% if controller.controller_name == "usereets" %>
+      <%= render "layouts/usereets_header" %>
+    <% elsif controller.controller_name == "companyeets" %>
+      <%= render "layouts/companyeets_header" %>
     <% end %>
-  </div>
-</div>
+  </header>
 
+  <% flash.each do |key, value| %>
+    <% key = "info" if key == "notice" %>
+    <% key = "danger"  if key == "alert" %>
+    <%= content_tag :div, value, class: "alert alert-#{key}" %>
+  <% end %>
 
-    <footer class="header">
-      <p>
-        Copyright WaveLocal 2016.
-      </p>
-    </footer>
+  <%= yield %>
+
+  <!-- <footer class="header footer">
+  <p>
+    Copyright WaveLocal 2016.
+  </p>
+  </footer> -->
   </body>
+
 </html>
- -->
