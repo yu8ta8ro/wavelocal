@@ -1,7 +1,7 @@
-class UsereetsController < ApplicationController
+class UsereetsController < RankingController
 
   def index
-    @usereets = Usereet.order('id DESC')
+    @usereets = Usereet.includes(:user).order('id DESC').page(params[:page]).per(4)
     @usereet = Usereet.new
   end
 

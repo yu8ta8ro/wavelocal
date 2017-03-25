@@ -1,120 +1,98 @@
-
-<div id="post", class="post-class">
-  <% @companyeets.each do |companyeet| %>
-    <div class="tweet-box">
-      <div class="chat-box">
-        <div class="chat-face">
-          <%= image_tag companyeet.company.avatar.url, width:"90", height:"90"%>
-        </div>
-        <div class="chat-area">
-          <div class="chat-hukidashi">
-            <%= companyeet.title %>
-              <p>　　　by <%= companyeet.company.nickname %></p>
-          </div>
-        </div>
-      </div>
-        <div class="dropdown">
-          <div class="dropbtn">
-            <div class="dropdown-content">
-              <% if company_signed_in? && current_company.id == companyeet.company_id %>
-                <%= link_to "編集", edit_companyeet_path(companyeet.id)%>
-                <%= link_to "削除", companyeet_path(companyeet.id), method: :delete %>
-              <% end %>
-            </div>
-            <%= image_tag companyeet.pic, class: "image_tag" %>
-          </div>
-        </div>
-    </div>
-  <% end %>
-</div>
-
-<!-- test -->
-<!-- <section id="two" class="wrapper style2 special"> -->
+<!-- Four -->
+<section id="four" class="wrapper style3 special">
   <div class="container">
-
-    <div class="row 150%">
-      <div class="6u 12u$(xsmall)">
-        <div class="image fit captioned">
-          <img src="images/pic02.jpg" alt="" />
-          <h3>Lorem ipsum dolor sit amet.</h3>
-        </div>
-      </div>
-      <div class="6u 12u$(xsmall)">
-        <div class="image fit captioned">
-          <img src="images/pic02.jpg" alt="" />
-          <h3>Lorem ipsum dolor sit amet.</h3>
-        </div>
-      </div>
-            <div class="6u 12u$(xsmall)">
-        <div class="image fit captioned">
-          <img src="images/pic02.jpg" alt="" />
-          <h3>Lorem ipsum dolor sit amet.</h3>
-        </div>
-      </div>
-            <div class="6u 12u$(xsmall)">
-        <div class="image fit captioned">
-          <img src="images/pic02.jpg" alt="" />
-          <h3>Lorem ipsum dolor sit amet.</h3>
-        </div>
-      </div>
-            <div class="6u 12u$(xsmall)">
-        <div class="image fit captioned">
-          <img src="images/pic02.jpg" alt="" />
-          <h3>Lorem ipsum dolor sit amet.</h3>
-        </div>
-      </div>
-    </div>
-    
+    <header class="major">
+      <h2>店主のつぶやき</h2>
+      <p>使えるクーポンが見つかるかも？</p>
+    </header>
   </div>
-<!-- </section> -->
-<!-- test end -->
+</section>
 
-<div class="post-field">
-  <% if company_signed_in? %>
-    <div class="registration-btn">
-      <p class="mbr-hero__subtext">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo", style="width: 350px;height: 60px">あなたも投稿しよう</button>
-      </p>
-    </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="exampleModalLabel">商品の紹介、商品のクーポンなど</h4>
-          </div>
-
-          <div id="post_field", class="post_field">
-            <%= form_for @companyeet, class:"form-group", remote: true, authenticity_token: true do |f| %>
-              <div class="modal-body">
-                <div class="form-group">
-                  <%= f.label :つぶやき, for:"recipient-name", class:"control-label" %>
-                  <%= f.text_area :title, type:"text", class:"form-control", id:"recipient-name", required:"true" %>
-                </div>
-                <div class="form-group">
-                  <%= f.label :画像, for:"exampleInputFile", class:"control-label" %>
-                  <%= f.file_field :pic, type:"file", required:"true" %>
-                  <%= f.hidden_field :company_id %>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <%= f.submit :投稿, class:"btn btn-primary" %>
-              </div>
-            <% end %>
+<!-- Two -->
+<section id="two" class="wrapper style2 special">
+  <div class="container">
+    <header class="major">
+    </header>
+    <div class="row 150%">
+        <div class="6u$ 12u$(xsmall)">
+          <div class="image fit captioned">
+            <img src="assets/yuito_facebook.jpg" alt="" />
+            <h3>[お知らせ]<br/>ゆいと(23歳)彼女募集中</h3>
           </div>
         </div>
-      </div>
     </div>
-    <% else %>
-    <div class="registration-btn">
-      <p class="mbr-hero__subtext">
-        <%= link_to "あなたも投稿しよう", new_company_session_path, type:"button", class:"btn btn-primary", style:"width: 350px;height: 60px"%>
-      </p>
-    </div>
-  <% end %>
-</div>
+  </div>
+</section>
 
-<% if company_signed_in? %>
-  <button class="floating", type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">投稿</button>
-  <div style="height:10px;width:10px;"></div>
-<% end %>
+<!-- Two -->
+<section id="two" class="wrapper style2 special">
+  <div class="container">
+    <header class="major">
+    </header>
+    <div class="row 150%">
+      <% @companyeets.each do |companyeet| %>
+        <div class="6u 12u$(xsmall)">
+          <div class="image fit captioned">
+            <%= image_tag companyeet.pic %>
+            <h3><%= companyeet.title %>
+              <small><time><%= time_ago_in_words companyeet.created_at %></time>前</small><br/>
+              - <%= companyeet.company.nickname %> -</a>
+              <% if company_signed_in? && current_company.id == companyeet.company_id %><br/>
+                <small><%= link_to "編集", edit_companyeet_path(companyeet.id), data: { confirm: "削除しますか？" } %></small>
+                <small><%= link_to "削除", companyeet_path(companyeet.id), data: { confirm: "削除しますか？" }, method: :delete %></small>
+              <% end %>
+            </h3>
+          </div>
+        </div>
+      <% end %>
+    </div>
+      <%= paginate(@companyeets) %>
+  </div>
+</section>
+
+<section id="four" class="wrapper style3 special">
+  <div class="container">
+    <header class="major">
+    </header>
+    <ul class="actions">
+      <% if company_signed_in? %>
+      <li>
+        <button type="button" class="button special big" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">店主の方専用ページ</button>
+      </li>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">商品の紹介、商品のクーポンなど</h4>
+              </div>
+
+              <div id="post_field", class="post_field">
+                <%= form_for @companyeet, class:"form-group", remote: true, authenticity_token: true do |f| %>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <%= f.label :つぶやき, for:"recipient-name", class:"control-label" %>
+                      <%= f.text_area :title, type:"text", class:"form-control", id:"recipient-name", required:"true" %>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :画像, for:"exampleInputFile", class:"control-label" %>
+                      <%= f.file_field :pic, type:"file", required:"true" %>
+                      <%= f.hidden_field :company_id %>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <%= f.submit :投稿, class:"btn btn-primary", data: { disable_with: 'Sending...'} %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% else %>
+          <li>
+           <%= link_to "店主の方専用ページ", new_company_session_path, class:"button special big" %>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+</section>

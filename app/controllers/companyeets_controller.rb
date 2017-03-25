@@ -1,7 +1,7 @@
 class CompanyeetsController < RankingController
 
   def index
-    @companyeets = Companyeet.order('id DESC')
+    @companyeets = Companyeet.includes(:company).order('id DESC').page(params[:page]).per(4)
     @companyeet = Companyeet.new
   end
 

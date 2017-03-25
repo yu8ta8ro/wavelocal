@@ -77,18 +77,18 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { :host => 'us-cdbr-iron-east-02.cleardb.net' }
+  # config.action_mailer.default_url_options = { :host => 'us-cdbr-iron-east-02.cleardb.net' }
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
-    :port           => '587',
-    :authentication => :plain,
-    :user_name      => ENV['app62982076@heroku.com'],
-    :password       => ENV['osf1arpe3293'],
-    :domain         => 'intense-eyrie-53145.herokuapp.com',
-    :enable_starttls_auto => true
-  }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   :address        => 'smtp.sendgrid.net',
+  #   :port           => '587',
+  #   :authentication => :plain,
+  #   :user_name      => ENV['app62982076@heroku.com'],
+  #   :password       => ENV['osf1arpe3293'],
+  #   :domain         => 'intense-eyrie-53145.herokuapp.com',
+  #   :enable_starttls_auto => true
+  # }
 
 end
 

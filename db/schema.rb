@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(version: 20161221063015) do
     t.integer  "avatar_file_size",       limit: 4
     t.datetime "avatar_updated_at"
     t.string   "nickname",               limit: 255
+    t.string   "lastname",               limit: 255
+    t.string   "firstname",              limit: 255
+    t.string   "address",                limit: 255
   end
 
   add_index "companies", ["confirmation_token"], name: "index_companies_on_confirmation_token", unique: true, using: :btree
@@ -95,6 +98,10 @@ ActiveRecord::Schema.define(version: 20161221063015) do
     t.integer  "avatar_file_size",       limit: 4
     t.datetime "avatar_updated_at"
     t.string   "nickname",               limit: 255
+    t.string   "lastname",               limit: 255
+    t.string   "firstname",              limit: 255
+    t.integer  "student",                limit: 4
+    t.integer  "others",                 limit: 4
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

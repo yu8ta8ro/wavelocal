@@ -5,34 +5,51 @@
     <%= devise_error_messages! %>
 
     <div class="form-item">
+      <%= f.label :姓 %>
+      <%= f.text_field :lastname, placeholder:"姓", required:"true" %>
+    </div>
+
+    <div class="form-item">
+      <%= f.label :名 %>
+      <%= f.text_field :firstname, placeholder:"名", required:"true" %>
+    </div>
+
+    <div class="form-item">
+      <%= f.label :ニックネーム %>
+      <%= f.text_field :nickname, placeholder:"ニックネーム", required:"true" %>
+    </div>
+
+    <div class="form-item">
+      <%= f.label :メールアドレス %>
       <%= f.email_field :email, autofocus: true, type:"email", required:"true", placeholder:"メールアドレス" %>
     </div>
 
     <div class="form-item">
+      <%= f.label :パスワード %>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> 字以下)</em>
+      <em>(<%= @minimum_password_length %> 字以上)</em>
       <% end %><br />
       <%= f.password_field :password, autocomplete: "off", type:"password", required:"required", placeholder:"パスワード" %>
     </div>
 
-
     <div class="form-item">
-      <%= f.label :パスワードの確認 %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off", required:"required", placeholder:"もう一度パスワードを入力してください" %>
+      <%= f.label :パスワードの確認 %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", required:"required", placeholder:"もう一度パスワードを入力してください" %><br/>
     </div>
 
     <div class="form-item">
-      <%= f.label :ニックネーム %><br />
-      <%= f.text_field :nickname %>
+      <%= f.check_box :student %>
+      <%= f.label :student, "学生" %><br/>
     </div>
 
     <div class="form-item">
-      <%= f.file_field :avatar, placeholder:"画像を選択してください" %>
+      <%= f.check_box :others %>
+      <%= f.label :others, '社会人、その他' %><br/>
     </div>
 
     <div class="button-panel">
       <div class="actions">
-        <%= f.submit "新規登録", class:"button", value:"Sign Up" %>
+        <%= f.submit "新規登録", class:"button", value:"Sign Up", data: { disable_with: 'Sending...'} %>
       </div>
     </div>
 

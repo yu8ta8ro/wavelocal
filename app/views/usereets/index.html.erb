@@ -1,4 +1,114 @@
 
+<!-- Four -->
+<section id="four" class="wrapper style3 special">
+  <div class="container">
+    <header class="major">
+      <h2>皆のつぶやき</h2>
+    </header>
+  </div>
+</section>
+
+
+<!-- Two -->
+<section id="two" class="wrapper style2 special">
+  <div class="container">
+    <header class="major">
+    </header>
+    <div class="row 150%">
+      <div class="6u$ 12u$(xsmall)">
+        <div class="image fit captioned">
+          <img src="assets/yuito_facebook.jpg" alt="" />
+          <h3>[お知らせ]<br/>ゆいと(23歳)彼女募集中</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Two -->
+<section id="two" class="wrapper style2 special">
+  <div class="container">
+    <header class="major">
+
+    </header>
+    <div class="row 150%">
+      <% @usereets.each do |usereet| %>
+        <div class="6u 12u$(xsmall)">
+          <div class="image fit captioned">
+            <%= image_tag usereet.pic %>
+            <h3><%= usereet.title %>
+              <small><time><%= time_ago_in_words usereet.created_at %></time>前</small><br/>
+              - <%= usereet.user.nickname %> -</a><br/>
+              <% if user_signed_in? %>
+                <small><%= link_to "LIKE!", usereet_path(usereet.id) %></small>
+              <% end %>
+              <% if user_signed_in? && current_user.id == usereet.user_id %>
+                <small><%= link_to "編集", edit_usereet_path(usereet.id), data: { confirm: "削除しますか？" } %></small>
+                <small><%= link_to "削除", usereet_path(usereet.id), data: { confirm: "削除しますか？" }, method: :delete %></small>
+              <% end %>
+            </h3>
+              <div>
+                <p class="like-box"><%= link_to "LIKE!", usereet_path(usereet.id), style:"text-decoration:none;" %>　<%= usereet.likes.count %>コ</p>
+              </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+      <%= paginate(@usereets) %>
+  </div>
+</section>
+
+<section id="four" class="wrapper style3 special">
+  <div class="container">
+    <ul class="actions">
+      <% if user_signed_in? %>
+        <% unless company_signed_in? %>
+        <li>
+          <button type="button" class="button special big" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">投稿する</button>
+        </li>
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="exampleModalLabel">商品の紹介、商品のクーポンなど</h4>
+                </div>
+
+                <div id="post_field", class="post_field">
+                  <%= form_for @usereet, class:"form-group", remote: true, authenticity_token: true do |f| %>
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <%= f.label :つぶやき, for:"recipient-name", class:"control-label" %>
+                        <%= f.text_area :title, type:"text", class:"form-control", id:"recipient-name", required:"true" %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.label :画像, for:"exampleInputFile", class:"control-label" %>
+                        <%= f.file_field :pic, type:"file", required:"true" %>
+                        <%= f.hidden_field :user_id %>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <%= f.submit :投稿, class:"btn btn-primary", id:"myButton", data: { disable_with: 'Sending...'} %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        <% else %>
+          <li>
+           <%= link_to "投稿しよう", new_user_session_path, class:"button special big" %>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+</section>
+
+
+
+<% if false %>
+
 <div id="post", class="post-class">
   <% @usereets.each do |usereet| %>
     <div class="tweet-box">
@@ -84,4 +194,6 @@
     <button class="floating", type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">投稿</button>
     <div style="height:10px;width:10px;"></div>
   <% end %>
+<% end %>
+
 <% end %>

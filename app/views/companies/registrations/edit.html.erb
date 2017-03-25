@@ -6,7 +6,17 @@
     <%= devise_error_messages! %>
 
     <div class="form-item">
-      <%= f.label :メールアドレス %><br />
+      <%= f.label :お店の名前 %>
+      <%= f.text_field :nickname, placeholder:"お店の名前", required:"true" %>
+    </div>
+
+    <div class="form-item">
+      <%= f.label :お店の住所 %>
+      <%= f.text_field :address, placeholder:"お店の住所", required:"true" %>
+    </div>
+
+    <div class="form-item">
+      <%= f.label :メールアドレス %>
       <%= f.email_field :email, autofocus: true %>
     </div>
 
@@ -15,27 +25,28 @@
     <% end %>
 
     <div class="form-item">
-      <%= f.label :パスワード %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
+      <%= f.label :現在のパスワードを入力してください %>
+      <%= f.password_field :current_password, autocomplete: "off" ,required:"true"%>
+    </div>
+
+    <div class="form-item">
+      <%= f.label :新しいパスワード %>
+      <%= f.password_field :password, autocomplete: "off",required:"true" %>
       <% if @minimum_password_length %>
         <br />
-        <em><%= @minimum_password_length %> 字以下</em>
-      <% end %>
+        <em><%= @minimum_password_length %> 字以上</em>
+      <% end %><br />
     </div>
 
     <div class="form-item">
-      <%= f.label :もう一度新しいパスワードを入力してください %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      <%= f.label :もう一度新しいパスワードを入力してください %>
+      <%= f.password_field :password_confirmation, autocomplete: "off" ,required:"true"%>
     </div>
 
-    <div class="form-item">
-      <%= f.label :現在のパスワードを入力してください %><br />
-      <%= f.password_field :current_password, autocomplete: "off" %>
-    </div>
 
     <div class="button-panel">
       <div class="actions">
-        <%= f.submit "更新", class:"button", value:"Update" %>
+        <%= f.submit "更新", class:"button", value:"Update", data: { disable_with: 'Sending...'} %>
       </div>
     </div>
 

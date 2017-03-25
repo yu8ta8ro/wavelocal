@@ -5,55 +5,37 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width">
   </head>
 
-  <% if controller.controller_name == "tops" %>
-    <body style="background: url(assets/shop_street_bokashi_ami.jpg) no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;">
-      <header>
-        <%= render "layouts/tops_header" %>
+
+  <body class="landing">
+
+    <!-- Header -->
+      <header id="header" class="alt">
+        <h1><strong><a href="https://wave125waseda.github.io/">Wave</a></strong></h1>
       </header>
 
+      <!-- Flash Message -->
       <% flash.each do |key, value| %>
         <% key = "info" if key == "notice" %>
         <% key = "danger"  if key == "alert" %>
         <%= content_tag :div, value, class: "alert alert-#{key}" %>
       <% end %>
 
-      <%= yield %>
+       <%= yield %>
 
-      <footer class="header footer">
-        <p>
-          Copyright WaveLocal 2016.
-        </p>
+    <!-- Footer -->
+      <footer id="footer">
+        <div class="container">
+          <ul class="icons">
+            <li><a href="#" class="icon fa-facebook"></a></li>
+            <li><a href="#" class="icon fa-twitter"></a></li>
+          </ul>
+          <ul class="copyright">
+            <li>Copyright WAVE 2017</li>
+          </ul>
+        </div>
       </footer>
-    </body>
-  <% else %>
-    <body>
-      <header>
-        <% if controller.controller_name == "usereets" %>
-          <%= render "layouts/usereets_header" %>
-        <% elsif controller.controller_name == "companyeets" %>
-          <%= render "layouts/companyeets_header" %>
-        <% end %>
-      </header>
-
-      <% flash.each do |key, value| %>
-        <% key = "info" if key == "notice" %>
-        <% key = "danger"  if key == "alert" %>
-        <%= content_tag :div, value, class: "alert alert-#{key}" %>
-      <% end %>
-
-      <%= yield %>
-
-      <!-- <footer class="header footer">
-        <p>
-          Copyright WaveLocal 2016.
-        </p>
-      </footer> -->
-    </body>
-  <% end %>
+  </body>
 </html>

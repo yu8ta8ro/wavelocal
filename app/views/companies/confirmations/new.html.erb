@@ -11,7 +11,7 @@
 
   <div class="button-panel">
     <div class="actions">
-      <%= f.submit "確認メールの再送信", class:"button" %>
+      <%= f.submit "確認メールの再送信", class:"button", data: { disable_with: 'Sending...'} %>
     </div>
   </div>
 <% end %>

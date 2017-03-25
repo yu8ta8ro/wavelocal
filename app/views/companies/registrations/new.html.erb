@@ -3,33 +3,49 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
+
+
     <div class="form-item">
+      <%= f.label :お店の名前 %>
+      <%= f.text_field :nickname, placeholder:"お店の名前", required:"true" %>
+    </div>
+
+    <div class="form-item">
+      <%= f.label :姓（代表の方） %>
+      <%= f.text_field :lastname, placeholder:"姓", required:"true" %>
+    </div>
+
+    <div class="form-item">
+      <%= f.label :名（代表の方） %>
+      <%= f.text_field :firstname, placeholder:"名", required:"true" %>
+    </div>
+
+    <div class="form-item">
+      <%= f.label :お店の住所 %>
+      <%= f.text_field :address, placeholder:"お店の住所", required:"true" %>
+    </div>
+
+    <div class="form-item">
+      <%= f.label :メールアドレス %>
       <%= f.email_field :email, autofocus: true, type:"email", required:"true", placeholder:"メールアドレス" %>
     </div>
 
     <div class="form-item">
+      <%= f.label :パスワード %>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> 字以下)</em>
+      <em>(<%= @minimum_password_length %> 字以上)</em>
       <% end %><br />
       <%= f.password_field :password, autocomplete: "off", type:"password", required:"required", placeholder:"パスワード" %>
     </div>
 
     <div class="form-item">
+      <%= f.label :パスワード確認 %>
       <%= f.password_field :password_confirmation, autocomplete: "off", placeholder:"もう一度パスワードを入力してください" %>
-    </div>
-
-    <div class="form-item">
-      <%= f.label :お店の名前 %><br />
-      <%= f.text_field :nickname, placeholder:"お店の名前" %>
-    </div>
-
-    <div class="form-item">
-      <%= f.file_field :avatar, placeholder:"画像を選択してください" %>
     </div>
 
     <div class="button-panel">
       <div class="actions">
-        <%= f.submit "新規登録", class:"button", value:"Sign Up" %>
+        <%= f.submit "新規登録", class:"button", value:"登録する", data: { disable_with: 'Sending...'} %>
       </div>
     </div>
 

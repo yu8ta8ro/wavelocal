@@ -2,33 +2,72 @@
 <html>
   <head>
     <title>Wavelocal</title>
-    <%= stylesheet_link_tag    'elements', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width">
   </head>
 
-  <body>
-  <header>
-    <% if controller.controller_name == "usereets" %>
-      <%= render "layouts/usereets_header" %>
-    <% elsif controller.controller_name == "companyeets" %>
-      <%= render "layouts/companyeets_header" %>
-    <% end %>
-  </header>
 
-  <% flash.each do |key, value| %>
-    <% key = "info" if key == "notice" %>
-    <% key = "danger"  if key == "alert" %>
-    <%= content_tag :div, value, class: "alert alert-#{key}" %>
-  <% end %>
+  <body class="landing">
 
-  <%= yield %>
+    <!-- Header -->
+      <header id="header" class="alt">
+        <h1><strong><a href="https://wave125waseda.github.io/">Wave</a></strong></h1>
+        <nav id="nav">
+          <ul>
+            <% if user_signed_in? %>
+              <% unless company_signed_in? %>
+                <li><%= link_to "店主のつぶやき", companyeets_path %></li>
+                <li><%= link_to "皆のつぶやき", usereets_path %></li>
+                <li><%= link_to "登録情報を編集する", edit_user_registration_path %></li>
+                <li><%= link_to "ログアウトする", destroy_user_session_path %></li>
+              <% end %>
+            <% elsif company_signed_in? %>
+              <li><%= link_to "店主のつぶやき", companyeets_path %></li>
+              <li><%= link_to "皆のつぶやき", usereets_path %></li>
+              <li><%= link_to "登録情報を編集する", edit_company_registration_path %></li>
+              <li><%= link_to "ログアウトする", destroy_company_session_path %></li>
+            <% else %>
+              <li ><%= link_to "ログイン", new_user_session_path %></li>
+              <li><%= link_to "店主のつぶやき", companyeets_path %></li>
+              <li><%= link_to "皆のつぶやき", usereets_path %></li>
+              <li><%= link_to "新規登録する", new_user_registration_path %></li>
+              <li><%= link_to "お店の方専用のページ", new_company_registration_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </header>
 
-  <!-- <footer class="header footer">
-  <p>
-    Copyright WaveLocal 2016.
-  </p>
-  </footer> -->
+      <!-- Flash Message -->
+      <% flash.each do |key, value| %>
+        <% key = "info" if key == "notice" %>
+        <% key = "danger"  if key == "alert" %>
+        <%= content_tag :div, value, class: "alert alert-#{key}" %>
+      <% end %>
+
+       <%= yield %>
+
+
+    <!-- Footer -->
+      <footer id="footer">
+        <div class="container">
+          <ul class="icons">
+            <li><a href="#" class="icon fa-facebook"></a></li>
+            <li><a href="#" class="icon fa-twitter"></a></li>
+          </ul>
+          <ul class="copyright">
+            <li>Copyright WAVE 2017</li>
+          </ul>
+        </div>
+      </footer>
+
+    <!-- Scripts -->
+      <script src="assets/jquery.min.js"></script>
+      <script src="assets/skel.min.js"></script>
+      <script src="assets/util.js"></script>
+      <script src="assets/main.js"></script>
+
+
   </body>
-
 </html>

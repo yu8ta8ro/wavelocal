@@ -5,9 +5,15 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= devise_error_messages! %>
 
+
     <div class="form-item">
-      <%= f.label :メールアドレス %><br />
-      <%= f.email_field :email, autofocus: true %>
+      <%= f.label :ニックネーム %>
+      <%= f.text_field :nickname, placeholder:"ニックネーム" %>
+    </div>
+
+    <div class="form-item">
+      <%= f.label :メールアドレス %>
+      <%= f.email_field :email, autofocus: true, type:"email", required:"true", placeholder:"メールアドレス" %>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -15,34 +21,33 @@
     <% end %>
 
     <div class="form-item">
-      <%= f.label :パスワード %><br />
-      <%= f.password_field :パスワード, autocomplete: "off" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> 字以下</em>
-      <% end %>
-    </div>
-
-    <div class="form-item">
-      <%= f.label :もう一度新しいパスワードを入力してください %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-
-    <div class="form-item">
-      <%= f.label :現在のパスワードを入力してください %><br />
+      <%= f.label :現在のパスワードを入力してください %>
       <%= f.password_field :current_password, autocomplete: "off" %>
+    </div>
+
+    <div class="form-item">
+      <%= f.label :新しいパスワード %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> 字以上)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "off", type:"password", required:"required", placeholder:"パスワード" %>
+    </div>
+
+    <div class="form-item">
+      <%= f.label :新しいパスワードの確認 %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", required:"required", placeholder:"もう一度パスワードを入力してください" %>
     </div>
 
     <div class="button-panel">
       <div class="actions">
-        <%= f.submit "更新", class:"button", value:"Update" %>
+        <%= f.submit "更新", class:"button", value:"Update", data: { disable_with: 'Sending...'} %>
       </div>
     </div>
 
   <% end %>
 
     <div class="button-panel">
-      <%= button_to "アカウントを削除", registration_path(resource_name), class:"button", data: { confirm: "Are you sure?" }, method: :delete %>
+      <%= button_to "アカウントを削除", registration_path(resource_name), class:"button", data: { confirm: "アカウント情報がすべて削除されます。アカウントを削除しますか？" }, method: :delete %>
     </div>
 
     <div class="form-footer">

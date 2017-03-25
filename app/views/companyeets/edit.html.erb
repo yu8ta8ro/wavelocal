@@ -1,3 +1,13 @@
+<!-- Four -->
+<section id="four" class="wrapper style3 special">
+  <div class="container">
+    <header class="major">
+      <h2>店主のつぶやき</h2>
+      <p>使えるクーポンが見つかるかも？</p>
+    </header>
+  </div>
+</section>
+
 <div class="tweet-box">
   <% if company_signed_in? %>
     <div id="post_field", class="post_field">
@@ -14,7 +24,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <%= f.submit :投稿, class:"btn btn-primary" %>
+          <%= f.submit :編集, class:"btn btn-primary", data: { disable_with: 'Sending...'} %>
         </div>
       <% end %>
     </div>
