@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: wavelocal_production
-  username: wavelocal
+  username: root
   password: <%= ENV['WAVELOCAL_DATABASE_PASSWORD'] %>
