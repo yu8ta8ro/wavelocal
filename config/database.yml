@@ -14,7 +14,7 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: hellojapan
+  password:
   socket: /tmp/mysql.sock
 
 development:
@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: wavelocal_production
-  username: root
+  username: wavelocal
   password: <%= ENV['WAVELOCAL_DATABASE_PASSWORD'] %>
