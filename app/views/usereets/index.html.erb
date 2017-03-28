@@ -43,7 +43,7 @@
                 <small><%= link_to "LIKE!", usereet_path(usereet.id) %></small>
               <% end %>
               <% if user_signed_in? && current_user.id == usereet.user_id %>
-                <small><%= link_to "編集", edit_usereet_path(usereet.id), data: { confirm: "削除しますか？" } %></small>
+                <small><%= link_to "編集", edit_usereet_path(usereet.id), data: { confirm: "編集しますか？" } %></small>
                 <small><%= link_to "削除", usereet_path(usereet.id), data: { confirm: "削除しますか？" }, method: :delete %></small>
               <% end %>
             </h3>
@@ -71,7 +71,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="exampleModalLabel">商品の紹介、商品のクーポンなど</h4>
+                  <h4 class="modal-title" id="exampleModalLabel">行ったお店・食べたもの・買ったものなど、投稿しよう</h4>
                 </div>
 
                 <div id="post_field", class="post_field">
@@ -88,7 +88,7 @@
                       </div>
                     </div>
                     <div class="modal-footer">
-                      <%= f.submit :投稿, class:"btn btn-primary", id:"myButton", data: { disable_with: 'Sending...'} %>
+                      <%= f.submit :投稿, class:"button special big", id:"myButton", data: { disable_with: 'Sending...'} %>
                     </div>
                   <% end %>
                 </div>
@@ -173,7 +173,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <%= f.submit :投稿, class:"btn btn-primary" %>
+                  <%= f.submit :投稿 %>
               </div>
             <% end %>
           </div>
