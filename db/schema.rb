@@ -14,12 +14,12 @@
 ActiveRecord::Schema.define(version: 20161221063015) do
 
   create_table "companies", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "email",                  limit: 255,   default: "", null: false
+    t.string   "encrypted_password",     limit: 255,   default: "", null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,     default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20161221063015) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email",      limit: 255
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
     t.string   "avatar_file_name",       limit: 255
     t.string   "avatar_content_type",    limit: 255
     t.integer  "avatar_file_size",       limit: 4
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20161221063015) do
     t.string   "lastname",               limit: 255
     t.string   "firstname",              limit: 255
     t.string   "address",                limit: 255
+    t.text     "intro",                  limit: 65535
   end
 
   add_index "companies", ["confirmation_token"], name: "index_companies_on_confirmation_token", unique: true, using: :btree
@@ -57,17 +58,16 @@ ActiveRecord::Schema.define(version: 20161221063015) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.integer  "usereet_id", limit: 4
+    t.integer  "company_id",    limit: 4
+    t.integer  "companyeet_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "company_id", limit: 4
+    t.integer  "user_id",       limit: 4
   end
 
   create_table "usereets", force: :cascade do |t|
     t.text     "title",            limit: 65535
     t.integer  "user_id",          limit: 4
-    t.integer  "likes_count",      limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "pic_file_name",    limit: 255
