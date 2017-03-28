@@ -35,7 +35,7 @@
       <% @usereets.each do |usereet| %>
         <div class="6u 12u$(xsmall)">
           <div class="image fit captioned">
-            <%= image_tag usereet.pic %>
+            <%= image_tag usereet.pic, alt:"assets/alt_for_pic.png" %>
             <h3><%= usereet.title %>
               <small><time><%= time_ago_in_words usereet.created_at %></time>前</small><br/>
               - <%= usereet.user.nickname %> -</a><br/>
