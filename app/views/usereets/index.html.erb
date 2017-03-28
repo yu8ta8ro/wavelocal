@@ -45,7 +45,7 @@
               <% end %>
             </h3>
               <div>
-                <% if user_signed_in? %>
+                <% if user_signed_in? || company_signed_in? %>
                   <p class="like-box"><%= link_to "LIKE!", usereet_path(usereet.id), style:"text-decoration:none;" %>　<%= usereet.likes.count %>コ</p>
                 <% else %>
                   <p class="like-box">LIKE!　<%= usereet.likes.count %>コ</p>
