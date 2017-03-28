@@ -39,16 +39,17 @@
             <h3><%= usereet.title %>
               <small><time><%= time_ago_in_words usereet.created_at %></time>前</small><br/>
               - <%= usereet.user.nickname %> -</a><br/>
-              <% if user_signed_in? %>
-                <small><%= link_to "LIKE!", usereet_path(usereet.id) %></small>
-              <% end %>
               <% if user_signed_in? && current_user.id == usereet.user_id %>
                 <small><%= link_to "編集", edit_usereet_path(usereet.id), data: { confirm: "編集しますか？" } %></small>
                 <small><%= link_to "削除", usereet_path(usereet.id), data: { confirm: "削除しますか？" }, method: :delete %></small>
               <% end %>
             </h3>
               <div>
-                <p class="like-box"><%= link_to "LIKE!", usereet_path(usereet.id), style:"text-decoration:none;" %>　<%= usereet.likes.count %>コ</p>
+                <% if user_signed_in? %>
+                  <p class="like-box"><%= link_to "LIKE!", usereet_path(usereet.id), style:"text-decoration:none;" %>　<%= usereet.likes.count %>コ</p>
+                <% else %>
+                  <p class="like-box">LIKE!　<%= usereet.likes.count %>コ</p>
+                <% end %>
               </div>
           </div>
         </div>
