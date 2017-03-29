@@ -1,6 +1,37 @@
-<div class="like-box">
-  <Nobr>LIKE!</Nobr>
-  <div id="likecomon">
-  <%= render 'likes/companylike', companyeet: @companyeet, like: @like %>
+
+<!-- Two -->
+<section id="two" class="wrapper style2 special">
+  <div class="container">
+    <header class="major">
+    </header>
+    <div class="row 150%">
+      <div class="6u 12u$(xsmall)">
+        <div class="image fit captioned">
+          <h3><%= @companyeet.title %>
+            - <%= @companyeet.company.nickname %> -</a>
+          <p>item</p>
+          <p>価格</p>
+          <p>締め切り</p>
+          </h3>
+          <div id="like">
+            <% if company_signed_in? || user_signed_in? %>
+              <%= button_to companyeet_likes_path(@companyeet.id), class: "btn btn-default", method: :post do %>
+              <%= image_tag("assets/icon_heart.svg") %>
+            <% end %>
+              <span>
+                <%= @companyeet.likes_count %>
+              </span>
+            <% else %>
+              <%= image_tag("icon_heart.svg") %>
+              <span class="num">
+                <%= @companyeet.likes_count %>
+              </span>
+            <% end %>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>

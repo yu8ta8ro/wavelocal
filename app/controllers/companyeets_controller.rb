@@ -1,4 +1,4 @@
-class CompanyeetsController < LinksController
+class CompanyeetsController < ApplicationController
 
   def index
     @companyeets = Companyeet.includes(:company).order('id DESC').page(params[:page]).per(4)
@@ -9,7 +9,7 @@ class CompanyeetsController < LinksController
     @companyeet = Companyeet.find(params[:id])
     companyeet = Companyeet.find(params[:id])
     if companyeet.like_user(current_user).present?
-      flash[:success] = '既にLIKE!しています'
+      flash[:success] = '既にご利用いただきました'
       redirect_to action: :index
     else
       @like = Like.find_by(company_id: current_company.id, companyeet_id: params[:id]) if company_signed_in?

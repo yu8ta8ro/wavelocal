@@ -16,8 +16,8 @@
     <div class="row 150%">
         <div class="6u$ 12u$(xsmall)">
           <div class="image fit captioned">
-            <img src="assets/yuito_facebook.jpg" alt="" />
-            <h3>[お知らせ]<br/>ゆいと(23歳)彼女募集中</h3>
+            <img src="assets/alt_for_pic.png" alt="" />
+            <h3>[お知らせ]<br/>広告主　募集中</h3>
           </div>
         </div>
     </div>
@@ -34,21 +34,17 @@
         <div class="6u 12u$(xsmall)">
           <div class="image fit captioned">
             <%= image_tag companyeet.pic %>
-            <h3><%= companyeet.title %>
+            <h3>
+              - <%= companyeet.company.nickname %> -<br/>
+              <%= companyeet.title %><br/>
               <small><time><%= time_ago_in_words companyeet.created_at %></time>前</small><br/>
-              - <%= companyeet.company.nickname %> -</a>
+              <%= companyeet.likes.count %>人利用しました<br/>
+                <small><%= link_to "クーポンをつかう", companyeet_path(companyeet.id), class:"button special" %></small>
               <% if company_signed_in? && current_company.id == companyeet.company_id %><br/>
                 <small><%= link_to "編集", edit_companyeet_path(companyeet.id), data: { confirm: "編集しますか？" } %></small>
-                <small><%= link_to "削除", companyeet_path(companyeet.id), data: { confirm: "削除しますか？" }, method: :delete %></small>
+                <small><%= link_to "削除", companyeet_path(companyeet.id), data: { confirm: "削除しますか？" }, method: :delete %></small><br/>
               <% end %>
             </h3>
-            <div>
-              <% if user_signed_in? || company_signed_in? %>
-                <p class="like-box"><%= link_to "LIKE!", companyeet_path(companyeet.id), style:"text-decoration:none;color:#f44066;" %>　<%= companyeet.likes.count %>コ</p>
-              <% else %>
-                <p class="like-box">LIKE!　<%= companyeet.likes.count %>コ</p>
-              <% end %>
-            </div>
           </div>
         </div>
       <% end %>
@@ -64,7 +60,7 @@
     <ul class="actions">
       <% if company_signed_in? %>
       <li>
-        <button type="button" class="button special big" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">店主の方専用ページ</button>
+        <button type="button" class="button special big" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">クーポンを発行</button>
       </li>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
           <div class="modal-dialog" role="document">
@@ -97,7 +93,7 @@
         </div>
         <% else %>
           <li>
-           <%= link_to "店主の方専用ページ", new_company_session_path, class:"button special big" %>
+           <%= link_to "店主専用ログイン", new_company_session_path, class:"button special big" %>
           </li>
       <% end %>
     </ul>

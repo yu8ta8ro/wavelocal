@@ -1,17 +1,11 @@
-      <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+    <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
     <!-- Banner -->
       <section id="banner">
         <h2>COOLPON</h2>
         <p>あなたの街で、使えるクーポン</p>
           <ul class="actions">
-
-            <% if user_signed_in? %>
               <li><%= link_to "クーポンを探そう", companyeets_path, class:"button special big" %></li>
-            <% else %>
-              <li><%= link_to "クーポンを探そう", new_user_session_path, class:"button special big" %></li>
-            <% end %>
-
-        </ul>
+          </ul>
       </section>
 
       <!-- One -->
@@ -92,7 +86,7 @@
               <p>Feugiat sed lorem ipsum magna</p>
             </header>
             <ul class="actions">
-              <li><a href="#" class="button special big">Get in touch</a></li>
+              <li><%= link_to "店主専用ログイン", new_company_session_path, class:"button special big" %></li>
             </ul>
           </div>
         </section>
