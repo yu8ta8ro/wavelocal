@@ -1,0 +1,19 @@
+<section id="two" class="wrapper style2 special">
+  <div class="container">
+    <header class="major">
+      <input type="button" value="パスワードを入力して秘密のページへアクセスする" onclick="gate();">
+    </header>
+  </div>
+</section>
+
+<script type="text/javascript">
+  function gate() {
+      var UserInput = prompt("パスワードを入力して下さい:","");
+      if (UserInput == "太陽"){
+        location.href = "companies/sign_up";
+      }else{
+        document.write("パスワードが正しくありません。")
+      }
+  }
+
+</script>

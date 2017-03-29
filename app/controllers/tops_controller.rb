@@ -1,4 +1,4 @@
-class TopsController < RankingController
+class TopsController < LinksController
   def index
   end
 end

@@ -1,4 +1,4 @@
-class CompanyeetsController < RankingController
+class CompanyeetsController < LinksController
 
   def index
     @companyeets = Companyeet.includes(:company).order('id DESC').page(params[:page]).per(4)

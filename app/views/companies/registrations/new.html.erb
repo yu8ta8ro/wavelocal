@@ -1,9 +1,8 @@
+
 <div class="form-wrapper">
   <h1>新規登録</h1>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
-
-
 
     <div class="form-item">
       <%= f.label :お店の名前 %>

@@ -6,13 +6,9 @@
           <ul class="actions">
 
             <% if user_signed_in? %>
-              <% unless company_signed_in? %>
-                <li><%= link_to "はじめる", new_user_session_path, class:"button special big" %></li>
-              <% end %>
-            <% elsif company_signed_in? %>
-              <li><%= link_to "はじめる", new_user_session_path, class:"button special big" %></li>
+              <li><%= link_to "クーポンを探そう", companyeets_path, class:"button special big" %></li>
             <% else %>
-              <li><%= link_to "はじめる", new_user_session_path, class:"button special big" %></li>
+              <li><%= link_to "クーポンを探そう", new_user_session_path, class:"button special big" %></li>
             <% end %>
 
         </ul>
