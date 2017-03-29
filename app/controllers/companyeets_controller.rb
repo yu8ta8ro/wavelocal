@@ -6,8 +6,14 @@ class CompanyeetsController < RankingController
   end
 
   def show
-    @like = Like.find_by(user_id: current_user.id, prototype_id: params[:id]) if user_signed_in?
     @companyeet = Companyeet.find(params[:id])
+    companyeet = Companyeet.find(params[:id])
+    if companyeet.like_user(current_user).present?
+      flash[:success] = '既にLIKE!しています'
+      redirect_to action: :index
+    else
+      @like = Like.find_by(company_id: current_company.id, companyeet_id: params[:id]) if company_signed_in?
+    end
   end
 
   def create

@@ -1,4 +1,4 @@
 class Like < ActiveRecord::Base
-  belongs_to :usereet, counter_cache: :likes_count
-  belongs_to :user
+  belongs_to :companyeet, counter_cache: :likes_count
+  belongs_to :company
 end

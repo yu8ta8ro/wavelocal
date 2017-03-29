@@ -42,6 +42,13 @@
                 <small><%= link_to "削除", companyeet_path(companyeet.id), data: { confirm: "削除しますか？" }, method: :delete %></small>
               <% end %>
             </h3>
+            <div>
+              <% if user_signed_in? || company_signed_in? %>
+                <p class="like-box"><%= link_to "LIKE!", companyeet_path(companyeet.id), style:"text-decoration:none;color:#f44066;" %>　<%= companyeet.likes.count %>コ</p>
+              <% else %>
+                <p class="like-box">LIKE!　<%= companyeet.likes.count %>コ</p>
+              <% end %>
+            </div>
           </div>
         </div>
       <% end %>
