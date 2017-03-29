@@ -1,4 +1,4 @@
-class UsereetsController < LinksController
+class UsereetsController < TriangleController
 
   def index
     @usereets = Usereet.includes(:user).order('id DESC').page(params[:page]).per(4)

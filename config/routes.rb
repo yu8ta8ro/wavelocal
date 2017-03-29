@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   resources :tops
   resources :users
   resources :companies
-  resources :links, only: [:index]
+  resources :triangle, only: [:index]
 
 end

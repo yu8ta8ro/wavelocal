@@ -1,4 +1,4 @@
-class TopsController < LinksController
+class TopsController < TriangleController
   def index
   end
 end

@@ -27,10 +27,9 @@
               <li><%= link_to "登録情報を編集", edit_company_registration_path %></li>
               <li><%= link_to "ログアウト", destroy_company_session_path %></li>
             <% else %>
-              <li><%= link_to "新規登録", new_user_registration_path %></li>
-              <li ><%= link_to "ログイン", new_user_session_path %></li>
+              <li><%= link_to "ログイン", new_user_session_path %></li>
               <li><%= link_to "クーポン情報", companyeets_path %></li>
-              <li><%= link_to "お店の方専用のページ", links_path %></li>
+              <li><%= link_to "新規登録", new_user_registration_path %></li>
             <% end %>
           </ul>
         </nav>

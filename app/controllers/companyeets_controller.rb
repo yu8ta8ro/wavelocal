@@ -1,4 +1,4 @@
-class CompanyeetsController < ApplicationController
+class CompanyeetsController < TriangleController
 
   def index
     @companyeets = Companyeet.includes(:company).order('id DESC').page(params[:page]).per(4)
