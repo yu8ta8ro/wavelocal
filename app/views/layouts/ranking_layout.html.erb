@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>coolpon</title>
+    <title>COOLPON</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -13,26 +13,23 @@
 
     <!-- Header -->
       <header id="header" class="alt">
-        <h1><strong><a href="/">coolpon</a></strong></h1>
+        <h1><small><a href="/", style="text-decoration: none;">coolpon</a></small></h1>
         <nav id="nav">
           <ul>
             <% if user_signed_in? %>
               <% unless company_signed_in? %>
-                <li><%= link_to "店主のつぶやき", companyeets_path %></li>
-                <li><%= link_to "皆のつぶやき", usereets_path %></li>
-                <li><%= link_to "登録情報を編集する", edit_user_registration_path %></li>
-                <li><%= link_to "ログアウトする", destroy_user_session_path %></li>
+                <li><%= link_to "クーポン情報", companyeets_path %></li>
+                <li><%= link_to "登録情報を編集", edit_user_registration_path %></li>
+                <li><%= link_to "ログアウト", destroy_user_session_path %></li>
               <% end %>
             <% elsif company_signed_in? %>
-              <li><%= link_to "店主のつぶやき", companyeets_path %></li>
-              <li><%= link_to "皆のつぶやき", usereets_path %></li>
-              <li><%= link_to "登録情報を編集する", edit_company_registration_path %></li>
-              <li><%= link_to "ログアウトする", destroy_company_session_path %></li>
+              <li><%= link_to "クーポン情報", companyeets_path %></li>
+              <li><%= link_to "登録情報を編集", edit_company_registration_path %></li>
+              <li><%= link_to "ログアウト", destroy_company_session_path %></li>
             <% else %>
+              <li><%= link_to "新規登録", new_user_registration_path %></li>
               <li ><%= link_to "ログイン", new_user_session_path %></li>
-              <li><%= link_to "店主のつぶやき", companyeets_path %></li>
-              <li><%= link_to "皆のつぶやき", usereets_path %></li>
-              <li><%= link_to "新規登録する", new_user_registration_path %></li>
+              <li><%= link_to "クーポン情報", companyeets_path %></li>
               <li><%= link_to "お店の方専用のページ", new_company_registration_path %></li>
             <% end %>
           </ul>
