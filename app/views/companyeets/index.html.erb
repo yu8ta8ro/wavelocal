@@ -36,7 +36,7 @@
             <%= image_tag companyeet.pic %>
             <h3>
               - <%= companyeet.company.nickname %> -<br/>
-              <%= companyeet.title %><br/>
+               <%= simple_format(companyeet.title)%><br/>
               <small><time><%= time_ago_in_words companyeet.created_at %></time>前</small><br/>
               <%= companyeet.likes.count %>人利用しました<br/>
                 <small><%= link_to "クーポンをつかう", companyeet_path(companyeet.id), class:"button special" %></small>
@@ -83,24 +83,27 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">商品の紹介、商品のクーポンなど</h4>
+                <h4 class="modal-title" id="exampleModalLabel">クーポンを発行</h4>
               </div>
 
               <div id="post_field", class="post_field">
                 <%= form_for @companyeet, class:"form-group", remote: true, authenticity_token: true do |f| %>
                   <div class="modal-body">
                     <div class="form-group">
-                      <%= f.label :つぶやき, for:"recipient-name", class:"control-label" %>
-                      <%= f.text_area :title, type:"text", class:"form-control", id:"recipient-name", required:"true" %>
+                      <%= f.label :クーポン内容, for:"recipient-name", class:"control-label" %>
+                      <%= f.text_area :title, type:"text", class:"form-control", id:"recipient-name", required:"true", placeholder:"例：ネギ追加無料" %>
                     </div>
                     <div class="form-group">
                       <%= f.label :画像, for:"exampleInputFile", class:"control-label" %>
                       <%= f.file_field :pic, type:"file", required:"true" %>
-                      <%= f.hidden_field :company_id %>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :有効期限, for:"exampleInputFile", class:"control-label" %>
+                      <%= f.date_select :period, default: Time.now + 1.day, use_month_numbers: true, start_year:2017, end_year:2017, date_separator: '/'%>
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <%= f.submit :投稿, class:"button special big", data: { disable_with: 'Sending...'} %>
+                    <%= f.submit :発行, class:"button special big", data: { disable_with: 'Sending...'} %>
                   </div>
                 <% end %>
               </div>

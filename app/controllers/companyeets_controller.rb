@@ -9,7 +9,7 @@ class CompanyeetsController < TriangleController
     @companyeet = Companyeet.find(params[:id])
     companyeet = Companyeet.find(params[:id])
     if companyeet.like_user(current_user).present?
-      flash[:success] = '既にご利用いただきました'
+      flash[:success] = '使用済みです'
       redirect_to action: :index
     else
       @like = Like.find_by(company_id: current_company.id, companyeet_id: params[:id]) if company_signed_in?
@@ -17,8 +17,9 @@ class CompanyeetsController < TriangleController
   end
 
   def create
-    Companyeet.create(title: create_params[:title], pic: create_params[:pic], company_id: current_company.id)
-    flash[:success] = '投稿しました'
+    time = Date.new(create_params[:"period(1i)"].to_i, create_params[:"period(2i)"].to_i, create_params[:"period(3i)"].to_i)
+    Companyeet.create(title: create_params[:title], pic: create_params[:pic], company_id: current_company.id, period: time)
+    flash[:success] = 'クーポンを発行しました'
     redirect_to action: :index
   end
 
@@ -27,8 +28,9 @@ class CompanyeetsController < TriangleController
   end
 
   def update
+    time = Date.new(create_params[:"period(1i)"].to_i, create_params[:"period(2i)"].to_i, create_params[:"period(3i)"].to_i)
     @companyeet = Companyeet.find(params[:id])
-    @companyeet.update(title: create_params[:title], pic: create_params[:pic], company_id: current_company.id)
+    @companyeet.update(title: create_params[:title], pic: create_params[:pic], period: time, company_id: current_company.id)
     flash[:success] = '編集しました'
     redirect_to action: :index
   end
@@ -42,6 +44,6 @@ class CompanyeetsController < TriangleController
 
   private
   def create_params
-    params.require(:companyeet).permit(:title, :pic)
+    params.require(:companyeet).permit(:title, :pic, :period)
   end
 end

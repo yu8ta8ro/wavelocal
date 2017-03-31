@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20161221063015) do
   create_table "companyeets", force: :cascade do |t|
     t.text     "title",            limit: 65535
     t.integer  "company_id",       limit: 4
+    t.date     "period"
     t.integer  "likes_count",      limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"

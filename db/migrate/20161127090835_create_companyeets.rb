@@ -3,6 +3,7 @@ class CreateCompanyeets < ActiveRecord::Migration
     create_table :companyeets do |t|
       t.text     :title
       t.integer  :company_id
+      t.date  :period
       t.integer  :likes_count
       t.timestamps
     end

@@ -8,6 +8,51 @@
   </div>
 </section>
 
+<!-- Two -->
+<section id="two" class="wrapper style2 special">
+  <div class="container">
+    <header class="major">
+    </header>
+    <div class="row 150%">
+        <div class="6u$ 12u$(xsmall)">
+          <div class="image fit captioned">
+            <h3>[お知らせ]<br/>広告主　募集中</h3>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- Two -->
+<section id="two" class="wrapper style2 special">
+  <div class="container">
+    <header class="major">
+    </header>
+    <div class="row 150%">
+        <div class="6u$ 12u$(xsmall)">
+          <div class="image fit captioned">
+            <h3>[お知らせ]<br/>広告主　募集中</h3>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- Two -->
+<section id="two" class="wrapper style2 special">
+  <div class="container">
+    <header class="major">
+    </header>
+    <div class="row 150%">
+        <div class="6u$ 12u$(xsmall)">
+          <div class="image fit captioned">
+            <h3>[お知らせ]<br/>広告主　募集中</h3>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
 <div class="tweet-box">
   <% if company_signed_in? %>
     <div id="post_field", class="post_field">
@@ -21,6 +66,10 @@
             <%= f.label :画像, for:"exampleInputFile", class:"control-label" %>
             <%= f.file_field :pic, type:"file", required:"true" %>
             <%= f.hidden_field :company_id %>
+          </div>
+          <div>
+            <%= f.label :有効期限, for:"exampleInputFile" %>
+              <%= f.date_select :period, default: Time.now + 1.day, use_month_numbers: true, start_year:2017, end_year:2017, date_separator: '/'%>
           </div>
         </div>
         <div class="modal-footer">
