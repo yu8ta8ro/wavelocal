@@ -1,4 +1,5 @@
 class CompanyeetsController < TriangleController
+  before_action :authenticate_user!, only: :show
 
   def index
     @companyeets = Companyeet.includes(:company).order('id DESC').page(params[:page]).per(4)
