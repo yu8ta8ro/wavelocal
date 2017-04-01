@@ -20,8 +20,8 @@
               </div>
               <div class="6u$ 12u$(medium)">
                 <h2>使い方簡単！</h2>
-                <h2>1. [ログイン]<br/>　[新規登録]をする</h2>
-                <h2>2. [クーポン情報]からクーポンを探す</h2>
+                <h2>1. <%= link_to '[ログイン]', new_user_session_path %><br/>　<%= link_to '[新規登録する]', new_user_registration_path %></h2>
+                <h2>2. <%= link_to '[クーポン情報]', companyeets_path %>からクーポンを探す</h2>
                 <h2>3. 店員さんにクーポンを提示しよう</h2>
               </div>
             </div>
@@ -49,10 +49,10 @@
           <div class="container">
             <header class="major">
               <h2>お店の方はこちら</h2>
-              <p>お手軽にクーポンを発行することができます</p>
+              <p>学生からの感謝の気持ちを込めて、<br/>「無料」でご利用いただけます</p>
             </header>
             <ul class="actions">
-              <li><%= link_to "店主専用ログイン", new_company_session_path, class:"button special big" %></li>
+              <li><%= link_to "新規登録する", triangle_index_path, class:"button special big" %></li>
             </ul>
           </div>
         </section>
