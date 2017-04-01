@@ -2,7 +2,7 @@ class CompanyeetsController < TriangleController
   before_action :authenticate_user!, only: :show
 
   def index
-    @companyeets = Companyeet.includes(:company).order('id DESC').page(params[:page]).per(4)
+    @companyeets = Companyeet.includes(:company, :likes).order('id DESC').page(params[:page]).per(4)
     @companyeet = Companyeet.new
   end
 
