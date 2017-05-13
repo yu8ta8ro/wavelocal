@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161221063015) do
+ActiveRecord::Schema.define(version: 20170506093641) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
@@ -58,12 +58,44 @@ ActiveRecord::Schema.define(version: 20161221063015) do
     t.datetime "pic_updated_at"
   end
 
+  create_table "corporations", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.text     "info",       limit: 65535
+    t.string   "url",        limit: 255
+    t.string   "address",    limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer  "company_id",    limit: 4
     t.integer  "companyeet_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id",       limit: 4
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string   "company",          limit: 255
+    t.string   "job",              limit: 255
+    t.string   "duration",         limit: 255
+    t.string   "frequency",        limit: 255
+    t.string   "payment",          limit: 255
+    t.string   "flexibility",      limit: 255
+    t.string   "sati_for_payment", limit: 255
+    t.string   "potential",        limit: 255
+    t.string   "growth",           limit: 255
+    t.string   "contribution",     limit: 255
+    t.string   "jobhunting",       limit: 255
+    t.string   "nps",              limit: 255
+    t.text     "detail",           limit: 65535
+    t.text     "skill",            limit: 65535
+    t.text     "edu_system",       limit: 65535
+    t.text     "merits",           limit: 65535
+    t.integer  "corporation_id",   limit: 4
+    t.integer  "user_id",          limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "usereets", force: :cascade do |t|
@@ -98,11 +130,10 @@ ActiveRecord::Schema.define(version: 20161221063015) do
     t.string   "avatar_content_type",    limit: 255
     t.integer  "avatar_file_size",       limit: 4
     t.datetime "avatar_updated_at"
-    t.string   "nickname",               limit: 255
     t.string   "lastname",               limit: 255
     t.string   "firstname",              limit: 255
-    t.integer  "student",                limit: 4
-    t.integer  "others",                 limit: 4
+    t.string   "uni_name",               limit: 255
+    t.integer  "grade",                  limit: 4
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

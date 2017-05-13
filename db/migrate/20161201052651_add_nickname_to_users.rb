@@ -1,9 +1,8 @@
 class AddNicknameToUsers < ActiveRecord::Migration
   def change
-    add_column :users, :nickname, :string
     add_column :users, :lastname, :string
     add_column :users, :firstname, :string
-    add_column :users, :student, :integer
-    add_column :users, :others, :integer
+    add_column :users, :uni_name, :string
+    add_column :users, :grade, :integer
   end
 end

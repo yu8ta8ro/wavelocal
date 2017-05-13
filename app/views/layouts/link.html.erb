@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>COOLPON</title>
+    <title>INT.REVIEW</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -13,23 +13,29 @@
 
     <!-- Header -->
       <header id="header" class="alt">
-        <h1><small><a href="/", style="text-decoration: none;">coolpon</a></small></h1>
+        <h1><small><a href="/", style="text-decoration: none;">INT.REVIEW</a></small></h1>
         <nav id="nav">
           <ul>
             <% if user_signed_in? %>
               <% unless company_signed_in? %>
-                <li><%= link_to "クーポン情報", companyeets_path %></li>
+                <li><%= link_to "口コミ", companyeets_path %></li>
                 <li><%= link_to "登録情報を編集", edit_user_registration_path %></li>
                 <li><%= link_to "ログアウト", destroy_user_session_path %></li>
+                <li><a>INT.REVIEWとは？</a></li>
+                <li><a>利用規約</a></li>
               <% end %>
             <% elsif company_signed_in? %>
-              <li><%= link_to "クーポン情報", companyeets_path %></li>
+              <li><%= link_to "口コミ", companyeets_path %></li>
               <li><%= link_to "登録情報を編集", edit_company_registration_path %></li>
               <li><%= link_to "ログアウト", destroy_company_session_path %></li>
+              <li><a>INT.REVIEWとは？</a></li>
+              <li><a>利用規約</a></li>
             <% else %>
+              <li><%= link_to "口コミ", companyeets_path %></li>
               <li><%= link_to "ログイン", new_user_session_path %></li>
-              <li><%= link_to "クーポン情報", companyeets_path %></li>
               <li><%= link_to "新規登録", new_user_registration_path %></li>
+              <li><a>INT.REVIEWとは？</a></li>
+              <li><a>利用規約</a></li>
             <% end %>
           </ul>
         </nav>

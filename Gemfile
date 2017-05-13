@@ -54,6 +54,8 @@ gem 'paperclip'
 
 gem 'pry-rails'
 
+gem 'rename'
+
 group :production do
   gem 'rails_12factor'
   gem 'execjs'
